@@ -144,7 +144,7 @@ export default function DetectFakeNews() {
       // 2. Explanation SECOND (non-blocking)
       try {
         const explainRes = await fetch(
-          "http://localhost:5000/api/chatbot/pramaan",
+          "https://no-fake-samacharbackend.vercel.app/api/chatbot/pramaan",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
