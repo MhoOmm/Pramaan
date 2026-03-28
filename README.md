@@ -42,7 +42,7 @@ Most existing solutions:
 
 To address these challenges, there is a need for a **unified platform** that:
 
-- Detects **AI-generated and suspicious content** using advanced models  
+- Detects **AI-generated and suspicious content** using advanced models such as RoBERTa, NLP techniques, MobileNetV2, and other state-of-the-art machine learning approaches.
 - Incorporates **community verification** for higher reliability  
 - Flags **potentially harmful or misleading information** in real-time  
 
