@@ -1,6 +1,5 @@
 tensorflow
 flask
-opencv-python
 numpy
 requests
 scikit-learn
