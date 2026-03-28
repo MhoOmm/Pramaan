@@ -91,12 +91,23 @@ const detectFakeImage = async (req, res) => {
     // ML backend call
     const mlResponse = await axios.post(
       "https://animan0810-pramaan-ml.hf.space/predict-image",
-      { image_url: imageUrl }
+      { image_url: imageUrl },
+      { timeout: 60000 }
     );
 
     res.json({ success: true, imageUrl, prediction: mlResponse.data });
-  } catch (error) {
-    console.error("detectFakeImage error:", error.message || error.response?.data || error);
+  }catch (error) {
+    console.error("detectFakeImage error:", error.message);
+    
+    // Check if Hugging Face sent a 503 (Waking Up) error
+    if (error.response && error.response.status === 503) {
+      return res.status(503).json({ 
+        success: false, 
+        message: "The AI model is currently waking up! Please wait 60 seconds and try again." 
+      });
+    }
+
+    // Otherwise, it's a real error
     res.status(500).json({ success: false, message: "Image detection failed" });
   }
 };
