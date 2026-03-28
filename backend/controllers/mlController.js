@@ -83,7 +83,7 @@ const detectFakeImage = async (req, res) => {
 
     // Cloudinary upload using tempFilePath and our custom utility
     const cloudinaryResponse = await uploadImageToCloudinary(
-      file.tempfilePath,
+      file.tempFilePath,
       "pramaan"
     );
     const imageUrl = cloudinaryResponse.secure_url;
