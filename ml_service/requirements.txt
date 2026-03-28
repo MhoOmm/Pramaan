@@ -1,0 +1,8 @@
+tensorflow==2.15.0
+flask
+opencv-python
+numpy
+requests
+scikit-learn
+pandas
+pillow
