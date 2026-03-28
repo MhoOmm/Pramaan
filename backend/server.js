@@ -25,8 +25,9 @@ dbconnect.connect();
 app.use(express.json());
 app.use(cookieParser());
 const allowedOrigins = [
-  "http://localhost:5173","*","https://pramaanf.vercel.app"
+  "https://pramaanf.vercel.app"
 ];
+// "http://localhost:5173","*",
 // if (process.env.CLIENT_ORIGIN) allowedOrigins.push(process.env.CLIENT_ORIGIN);
 
 app.use(cors({
