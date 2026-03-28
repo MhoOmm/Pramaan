@@ -146,7 +146,7 @@ const aiGeneratedtext = async (req, res) => {
 
   } catch (error) {
     console.error(error.message);
-    res.status(500).json({ error: "ML service error" });
+    res.status(error.response?.status || 500).json({ error: error.response?.data?.error || "ML service error" });
   }
 };
 

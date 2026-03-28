@@ -150,7 +150,7 @@ function PrimaryBtn({ children, disabled, loading, label, ...props }) {
 ═══════════════════════════════════════════════ */
 const PANEL = {
   signup: { step: 0, heading: "Begin your", accent: "journey.", sub: "Join a community building truth on the internet, one verdict at a time." },
-  otp: { step: 1, heading: "Verify your", accent: "identity.", sub: "One step away from joining Pranaam." },
+  otp: { step: 1, heading: "Verify your", accent: "identity.", sub: "One step away from joining Pramaan." },
   login: { step: null, heading: "Welcome", accent: "back.", sub: "The truth has been waiting for you." },
 };
 
@@ -182,7 +182,7 @@ function LeftPanel({ view }) {
         {/* Logo — big, no bg, no border, just the image */}
         <img
           src={logo}
-          alt="Pranaam logo"
+          alt="Pramaan logo"
           className="w-28 h-28 object-contain mb-5"
           style={{ filter: " brightness(0.9)" }}
         />
@@ -261,8 +261,8 @@ export default function Auth() {
       <div className="flex-1 flex flex-col bg-white">
         {/* mobile logo bar */}
         <div className="lg:hidden flex items-center gap-2.5 px-6 pt-8 pb-4 border-b border-zinc-100">
-          <img src={logo} alt="Pranaam" className="w-8 h-8 object-contain" />
-          <span style={SG} className="text-zinc-900 font-bold text-sm tracking-wide">Pranaam</span>
+          <img src={logo} alt="Pramaan" className="w-8 h-8 object-contain" />
+          <span style={SG} className="text-zinc-900 font-bold text-sm tracking-wide">Pramaan</span>
         </div>
 
         <div className="flex-1 flex items-center justify-center px-8 py-14 overflow-hidden">
@@ -410,7 +410,7 @@ function SignupView({ onSuccess, goLogin }) {
       </form>
 
       <p style={SG} className="text-zinc-300 text-[11px] text-center mt-5 leading-relaxed">
-        By signing up you agree to Pranaam's community standards of truth,<br />transparency and ethical AI use.
+        By signing up you agree to Pramaan's community standards of truth,<br />transparency and ethical AI use.
       </p>
     </motion.div>
   );
@@ -439,7 +439,7 @@ function OtpView({ pendingUser, onBack, onSuccess }) {
         localStorage.setItem("token", res.data.user.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));
       }
-      toast.success("Identity verified. Welcome to Pranaam 🙏");
+      toast.success("Identity verified. Welcome to Pramaan 🙏");
       onSuccess();
     } catch (err) {
       setError(err?.response?.data?.message || "Invalid OTP. Please try again.");
@@ -555,7 +555,7 @@ function LoginView({ goSignup, onSuccess }) {
         localStorage.setItem("token", res.data.user.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));
       }
-      toast.success("Welcome back to Pranaam 🙏");
+      toast.success("Welcome back to Pramaan 🙏");
       onSuccess();
     } catch (err) {
       toast.error(err?.response?.data?.message || "Login failed");
@@ -570,7 +570,7 @@ function LoginView({ goSignup, onSuccess }) {
       transition={slideTrans} className="w-full max-w-md"
     >
       <div className="mb-10">
-        <h1 style={SG} className="text-[1.75rem] font-bold text-zinc-900 tracking-tight">Sign in to Pranaam</h1>
+        <h1 style={SG} className="text-[1.75rem] font-bold text-zinc-900 tracking-tight">Sign in to Pramaan</h1>
         <p style={SG} className="text-zinc-400 text-sm mt-1.5">
           New here?{" "}
           <button onClick={goSignup}
@@ -609,7 +609,7 @@ function LoginView({ goSignup, onSuccess }) {
       </form>
 
       <p style={SG} className="text-zinc-300 text-[11px] text-center mt-8">
-        Pranaam — Explaining the Truth Behind Every Verdict.
+        Pramaan — Explaining the Truth Behind Every Verdict.
       </p>
     </motion.div>
   );
