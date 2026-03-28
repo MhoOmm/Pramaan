@@ -68,3 +68,131 @@ To address these challenges, there is a need for a **unified platform** that:
 We aim to build a solution that combines **AI-powered detection** with **human validation** to create a more **trustworthy digital ecosystem** and combat the rising threat of misinformation.
 
 ---
+
+## 💡 Our Solution
+
+To overcome the above challenges, we propose:
+
+### 🔐 **“PRAMAAN” – A Community-Driven Ethical AI Platform for Detecting and Verifying Fake Digital Content**
+
+Using **PRAMAAN**, users can upload **images, text, emails, or links** to check whether they are **fake, AI-generated, or malicious** using machine learning models.
+
+The platform also functions as a **social media-style community**, where users can post suspected fake news or manipulated media, and other users can **review, upvote, or downvote** its authenticity.
+
+A **karma-based reputation system** rewards users who consistently identify misinformation accurately. By combining **AI-based detection** with **community moderation**, the platform improves **reliability, transparency, and trust** in identifying fake content.
+
+---
+
+## 🏗️ Our Architecture
+
+- **User Layer**  
+  - Guest users can access AI detection tools  
+  - Detect:
+    - DeepFake Images  
+    - Phishing Messages & Emails  
+    - AI-generated Text  
+    - Fake News  
+
+- **Authentication**  
+  - Secure login system  
+  - Required for:
+    - Posting content  
+    - Voting  
+    - Karma participation  
+
+- **AI Processing**  
+  - Inputs (image/text/email) are analyzed using ML models  
+  - Detects:
+    - Deepfakes  
+    - AI-generated content  
+    - Phishing attempts  
+
+- **Community Layer**  
+  - Logged-in users can:
+    - Create posts  
+    - Validate content via **upvotes/downvotes**  
+
+- **Threshold Trigger**  
+  - Posts crossing a predefined vote limit are automatically sent for **AI verification**  
+
+- **Data Management**  
+  - Stores:
+    - Users  
+    - Posts  
+    - Votes  
+    - Karma scores  
+    - ML results  
+
+- **Dashboard**  
+  - Displays:
+    - AI analysis  
+    - Community validation  
+  - Provides **final credibility score**
+
+---
+
+## 🌍 Impact
+
+- **✔️ Reduces Misinformation Spread**  
+  Helps identify fake news, deepfakes, and misleading content before it goes viral  
+
+- **✔️ Enhances Digital Trust**  
+  Combines AI detection with community validation  
+
+- **✔️ Prevents Financial & Cyber Fraud**  
+  Detects phishing emails and SMS  
+
+- **✔️ Promotes Responsible AI Usage**  
+  Identifies AI-generated or manipulated content  
+
+- **✔️ Empowers Users**  
+  Encourages independent verification and improves digital literacy  
+
+---
+
+## 🌐 Real-World Applications
+
+- **📱 Social Media Platforms**  
+  - Flag fake news and deepfakes in real-time  
+
+- **🛡️ Cybersecurity & Fraud Detection**  
+  - Detect phishing and prevent scams  
+
+- **📰 Journalism & Fact-Checking**  
+  - Verify authenticity of news  
+
+- **🎓 Education Sector**  
+  - Teach identification of AI-generated content  
+
+- **🏢 Corporate & Enterprise Use**  
+  - Verify emails and internal communication  
+
+- **🏛️ Government & Public Safety**  
+  - Monitor and control misleading information  
+
+---
+
+## ⚙️ Setup & Usage
+
+### 🛠️ Run Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/MhoOmm/Pramaan.git
+cd pramaan
+
+# Install backend dependencies
+cd backend
+npm install
+nodemon server.js
+
+# Install ML services
+cd ../ml_service
+venv\Scripts\activate
+pip install -r requirements.txt
+python app.py
+
+# Install frontend dependencies
+cd ../frontend
+npm install
+npm run dev
