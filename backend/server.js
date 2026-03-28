@@ -74,6 +74,10 @@ setInterval(async () => {
 }, 10 * 60 * 1000);
 const port = process.env.PORT || 4000;
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}
+
+module.exports = app;

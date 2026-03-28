@@ -34,7 +34,7 @@ export default function CreatePostModal({ isOpen, onClose, onSuccess }) {
         formData.append("imageUrl", imageUrl); // Append as 'imageUrl'
       }
 
-      const res = await axios.post("http://localhost:5000/api/chat/post",
+      const res = await axios.post("https://pramaan-omega.vercel.app/api/chat/post",
         formData, // Send formData instead of a plain object
         {
           headers: {

@@ -11,7 +11,7 @@ export default function CommentSection({ postId }) {
 
   const fetchComments = useCallback(async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/chat/get-comments?postId=${postId}`);
+      const res = await axios.get(`https://pramaan-omega.vercel.app/api/chat/get-comments?postId=${postId}`);
       if (res.data.success) {
         setComments(res.data.roots || []);
       }
@@ -32,7 +32,7 @@ export default function CommentSection({ postId }) {
     setSubmitting(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post("http://localhost:5000/api/chat/create-comment",
+      const res = await axios.post("https://pramaan-omega.vercel.app/api/chat/create-comment",
         { postId, text: newComment, parentCommentId: null },
         { headers: { Authorization: `Bearer ${token}` } }
       );
