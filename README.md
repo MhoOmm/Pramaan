@@ -5,22 +5,16 @@
 **Team Name:** API_Smiths  
 
 **Team Members:**
-- **Omm Tripathi** – 23051606  
 - **Hamza Patel** – 2305215 *(Team Lead)* 
-- **Asmit Sahu** – 23052231  
 - **Aniket Dhar** – 23051570
+- **Asmit Sahu** – 23052231  
+- **Omm Tripathi** – 23051606  
 
 - Deployment Link:- 
 
 ---
 
-## 🌐 Domain
-
-**Cybersecurity & Ethical AI Systems**
-
----
-
-## 📌 Problem Statement
+## 📌 Problem Statement -  AI-Powered Misinformation Detection
 
 ### 🔍 **The Challenge**
 
