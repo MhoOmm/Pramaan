@@ -25,8 +25,7 @@ dbconnect.connect();
 app.use(express.json());
 app.use(cookieParser());
 const allowedOrigins = [
-  "http://localhost:5173",
-  "https://hack4impacttrack2-api-smiths.onrender.com"
+  "http://localhost:5173"
 ];
 // if (process.env.CLIENT_ORIGIN) allowedOrigins.push(process.env.CLIENT_ORIGIN);
 

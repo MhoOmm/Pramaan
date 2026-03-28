@@ -127,7 +127,7 @@ export default function DetectFakeNews() {
       setExplanation("");
 
       // 1. ML Detection FIRST (works)
-      const mlRes = await fetch("https://backend-rust-beta-5dlclsgxuc.vercel.app/api/ml/analyze/fakenews", {
+      const mlRes = await fetch("http://localhost:5000/api/ml/analyze/fakenews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: text.trim() }),
@@ -144,7 +144,7 @@ export default function DetectFakeNews() {
       // 2. Explanation SECOND (non-blocking)
       try {
         const explainRes = await fetch(
-          "https://no-fake-samacharbackend-7biq.onrender.com/api/chatbot/pramaan",
+          "http://localhost:5000/api/chatbot/pramaan",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
