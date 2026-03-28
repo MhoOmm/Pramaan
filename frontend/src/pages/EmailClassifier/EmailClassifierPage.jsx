@@ -435,7 +435,7 @@ export default function EmailClassifierPage() {
     if (!emailText.trim()) return;
     setStatus("loading"); setResult(null); setErrorMsg("");
     try {
-      const res = await fetch("https://backend-rust-beta-5dlclsgxuc.vercel.app/api/hf/detect-email", {
+      const res = await fetch("http://localhost:5000/api/hf/detect-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: emailText.trim() }),
