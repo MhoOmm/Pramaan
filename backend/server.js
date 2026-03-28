@@ -25,8 +25,7 @@ dbconnect.connect();
 app.use(express.json());
 app.use(cookieParser());
 const allowedOrigins = [
-  "http://localhost:5173",
-  "https://hack4impacttrack2-api-smiths.onrender.com"
+  "http://localhost:5173","*"
 ];
 // if (process.env.CLIENT_ORIGIN) allowedOrigins.push(process.env.CLIENT_ORIGIN);
 
@@ -55,7 +54,24 @@ app.use('/api/chat',postRouter);
 app.use("/api/ml", mlRouter);
 app.use("/api/hf",hfrouter)
 
+const axios = require('axios');
 
+const SPACES = [
+    "https://animan0810-pramaan-ml.hf.space",
+    "https://animan0810-pramaan-ai-detector-api.hf.space"
+];
+
+// Ping both spaces every 10 minutes
+setInterval(async () => {
+    for (const url of SPACES) {
+        try {
+            await axios.get(`${url}/`, { timeout: 5000 });
+            console.log(`✅ Pinged ${url}`);
+        } catch {
+            console.log(`⚠️ ${url} is waking up...`);
+        }
+    }
+}, 10 * 60 * 1000);
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
