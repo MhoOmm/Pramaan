@@ -19,7 +19,7 @@ export default function CommunityFeed() {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get("https://backend-rust-beta-5dlclsgxuc.vercel.app/api/chat/posts");
+      const res = await axios.get("http://localhost:5000/api/chat/posts");
       if (res.data.success) {
         setPosts(res.data.posts);
       }

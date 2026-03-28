@@ -314,7 +314,7 @@ function SignupView({ onSuccess, goLogin }) {
     if (!selectedSeed) { toast.error("Please choose an avatar"); return; }
     setLoading(true);
     try {
-      await axios.post("https://backend-rust-beta-5dlclsgxuc.vercel.app/api/user/signup", {
+      await axios.post("http://localhost:5000/api/user/signup", {
         userName: data.userName,
         email: data.email,
         password: data.password,
@@ -431,7 +431,7 @@ function OtpView({ pendingUser, onBack, onSuccess }) {
     if (code.length < 6) { setError("Please enter all 6 digits."); return; }
     setLoading(true); setError(""); setOtpResent(false);
     try {
-      const res = await axios.post("https://backend-rust-beta-5dlclsgxuc.vercel.app/api/user/otp-verify", {
+      const res = await axios.post("http://localhost:5000/api/user/otp-verify", {
         userName: pendingUser,
         otp: Number(code),
       });
@@ -452,7 +452,7 @@ function OtpView({ pendingUser, onBack, onSuccess }) {
   const handleResend = async () => {
     setLoading(true); setError(""); setOtpResent(false);
     try {
-      await axios.post("https://backend-rust-beta-5dlclsgxuc.vercel.app/api/user/resend-otp", { userName: pendingUser });
+      await axios.post("http://localhost:5000/api/user/resend-otp", { userName: pendingUser });
       setOtpResent(true);
       setOtp(Array(6).fill(""));
     } catch (err) {
@@ -547,7 +547,7 @@ function LoginView({ goSignup, onSuccess }) {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const res = await axios.post("https://backend-rust-beta-5dlclsgxuc.vercel.app/api/user/login", {
+      const res = await axios.post("http://localhost:5000/api/user/login", {
         userName: data.userName,
         password: data.password,
       });
