@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import hello from "../../assets/hello.gif";
 
-const FONT = "Arial, sans-serif";
+const FONT = "'Space Grotesk', sans-serif";
 
 const RESULT_CONFIG = {
   fake: {
@@ -234,11 +234,41 @@ export default function DetectFakeNews() {
             color: "#777",
             letterSpacing: "0.1em",
             fontSize: "13px",
-            marginBottom: "30px",
+            marginBottom: "25px",
           }}
         >
           NLP MODEL · MISINFORMATION ANALYSIS
         </p>
+
+        <div style={{ marginBottom: "35px", display: "flex", flexDirection: "column", gap: "10px" }}>
+          <p style={{ color: "#aaa", fontSize: "14px", letterSpacing: "0.05em", margin: 0 }}>
+            From the house of <strong style={{color: "#fff"}}>API_Smiths</strong>
+          </p>
+          <a
+            href="https://no-fake-samachar.onrender.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "12px 24px",
+              background: "rgba(255, 255, 255, 0.05)",
+              color: "#fff",
+              textDecoration: "none",
+              borderRadius: "8px",
+              border: "1px solid rgba(255,255,255,0.2)",
+              fontSize: "15px",
+              letterSpacing: "0.05em",
+              fontWeight: "500",
+              backdropFilter: "blur(10px)",
+              width: "fit-content",
+              transition: "all 0.3s ease"
+            }}
+          >
+            Explore our All-in-One True News Platform 🚀
+          </a>
+        </div>
 
         {/* TEXT INPUT */}
         <textarea
