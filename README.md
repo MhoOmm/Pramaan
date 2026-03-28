@@ -182,6 +182,7 @@ nodemon server.js
 
 # Install ML services
 cd ../ml_service
+python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 python app.py
@@ -190,3 +191,43 @@ python app.py
 cd ../frontend
 npm install
 npm run dev
+
+---
+
+## 🧩 Browser Extension Setup
+
+Follow these steps to install and use the PRAMAAN browser extension:
+
+### 🌐 Steps to Install
+
+1. Open **Google Chrome**
+2. Navigate to: chrome://extensions/
+3. Enable **Developer Mode** (toggle on the top-right corner)
+4. Click on **Load unpacked**
+5. Select the `extension` folder from the cloned repository
+6. The extension will now be added to your browser
+7. Ensure the extension is **enabled**
+
+---
+
+### 🚀 How to Use
+
+- Click on the extension icon in the Chrome toolbar  
+- Upload or scan content directly from your browser  
+- Instantly analyze:
+- Web links  
+- Text content  
+- Suspicious pages
+- Fake news and images 
+
+- Get **real-time AI-based detection results**
+
+---
+
+### ⚠️ Notes
+
+- Make sure Developer Mode remains enabled  
+- Reload the extension if you make any changes to the code  
+- Works best on the latest version of Google Chrome  
+
+---
