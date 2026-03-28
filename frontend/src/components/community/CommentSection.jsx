@@ -11,7 +11,7 @@ export default function CommentSection({ postId }) {
 
   const fetchComments = useCallback(async () => {
     try {
-      const res = await axios.get(`https://backend-rust-beta-5dlclsgxuc.vercel.app/api/chat/get-comments?postId=${postId}`);
+      const res = await axios.get(`http://localhost:5000/api/chat/get-comments?postId=${postId}`);
       if (res.data.success) {
         setComments(res.data.roots || []);
       }

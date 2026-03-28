@@ -1,5 +1,6 @@
 
 const axios = require('axios')
+const cloudinary = require("cloudinary").v2;
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 
 // // FAKE NEWS CONTROLLER
@@ -80,19 +81,11 @@ const detectFakeImage = async (req, res) => {
 
     const file = req.files.image;
 
-    // Cloudinary upload from buffer
-    const streamUpload = (fileBuffer) => new Promise((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream(
-        { folder: "pramaan", resource_type: "auto" },
-        (error, result) => {
-          if (error) return reject(error);
-          resolve(result);
-        }
-      );
-      stream.end(fileBuffer);
-    });
-
-    const cloudinaryResponse = await streamUpload(file.data);
+    // Cloudinary upload using tempFilePath and our custom utility
+    const cloudinaryResponse = await uploadImageToCloudinary(
+      file,
+      "pramaan"
+    );
     const imageUrl = cloudinaryResponse.secure_url;
 
     // ML backend call

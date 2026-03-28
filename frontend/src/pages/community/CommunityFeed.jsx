@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../../axios/index";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, LayoutDashboard } from "lucide-react";
@@ -19,7 +19,7 @@ export default function CommunityFeed() {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get("https://backend-rust-beta-5dlclsgxuc.vercel.app/api/chat/posts");
+      const res = await api.get("/api/chat/posts");
       if (res.data.success) {
         setPosts(res.data.posts);
       }
@@ -38,7 +38,7 @@ export default function CommunityFeed() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/user/logout");
+      await api.post("/api/user/logout");
     } catch (err) {
       console.error("Logout error", err);
     } finally {

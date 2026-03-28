@@ -16,7 +16,7 @@ export default function PostCard({ post, index, onVoteUpdate }) {
     setIsVoting(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post("https://backend-rust-beta-5dlclsgxuc.vercel.app/api/chat/vote", 
+      const res = await axios.post("http://localhost:5000/api/chat/vote", 
         { postId: post._id, value },
         { headers: { Authorization: `Bearer ${token}` } } // Assuming standard Bearer or token based auth.
       );

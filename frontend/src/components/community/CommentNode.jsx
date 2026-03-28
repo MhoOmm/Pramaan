@@ -18,7 +18,7 @@ export default function CommentNode({ comment, postId, onRefresh, depth = 0 }) {
     setSubmitting(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post("https://backend-rust-beta-5dlclsgxuc.vercel.app/api/chat/create-comment",
+      const res = await axios.post("http://localhost:5000/api/chat/create-comment",
         { postId, text: replyText, parentCommentId: comment._id },
         { headers: { Authorization: `Bearer ${token}` } }
       );

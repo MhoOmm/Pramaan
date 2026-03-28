@@ -149,7 +149,7 @@ exports.createPost = async (req, res) => {
 
         if (req.files && req.files.image) {
             const { uploadImageToCloudinary } = require("../utils/imageUploader");
-            const result = await uploadImageToCloudinary(req.files.image.tempFilePath, "pranaam_posts");
+            const result = await uploadImageToCloudinary(req.files.image, "pramaan_posts");
             imageUrl = result.secure_url;
         }
 
