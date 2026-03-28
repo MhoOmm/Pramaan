@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Pramaan - Ultimate Verifier",
+  "version": "2.0",
+  "description": "Real-time AI detection for deepfakes, fake news, sms fraud, and phishing by API_Smiths.",
+  "permissions": ["contextMenus", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Pramaan Scanner"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/logo.jpeg"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

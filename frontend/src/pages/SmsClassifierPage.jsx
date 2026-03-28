@@ -379,7 +379,7 @@ export default function SMSClassifierPage() {
     if (!message.trim()) return;
     setStatus("loading"); setResult(null); setErrorMsg("");
     try {
-      const { data } = await api.post("http://localhost:5000/api/ml/analyze/sms", { text: message.trim() });
+      const { data } = await api.post("https://pramaan-omega.vercel.app/api/ml/analyze/sms", { text: message.trim() });
       setResult(data);
       setStatus("success");
     } catch (err) {

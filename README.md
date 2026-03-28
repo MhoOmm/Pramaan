@@ -5,22 +5,16 @@
 **Team Name:** API_Smiths  
 
 **Team Members:**
-- **Omm Tripathi** – 23051606 *(Team Lead)*  
-- **Hamza Patel** – 2305215  
-- **Asmit Sahu** – 23052231  
+- **Hamza Patel** – 2305215 *(Team Lead)* 
 - **Aniket Dhar** – 23051570
+- **Asmit Sahu** – 23052231  
+- **Omm Tripathi** – 23051606  
 
 - Deployment Link:- 
 
 ---
 
-## 🌐 Domain
-
-**Cybersecurity & Ethical AI Systems**
-
----
-
-## 📌 Problem Statement
+## 📌 Problem Statement -  AI-Powered Misinformation Detection
 
 ### 🔍 **The Challenge**
 
@@ -68,71 +62,131 @@ To address these challenges, there is a need for a **unified platform** that:
 We aim to build a solution that combines **AI-powered detection** with **human validation** to create a more **trustworthy digital ecosystem** and combat the rising threat of misinformation.
 
 ---
-# 🚀 Hackathon Submission – API_Smiths
 
-## 👥 Team Information
+## 💡 Our Solution
 
-**Team Name:** API_Smiths  
+To overcome the above challenges, we propose:
 
-**Team Members:**
-- **Omm Tripathi** – 23051606 *(Team Lead)*  
-- **Hamza Patel** – 2305215  
-- **Asmit Sahu** – 23052231  
-- **Aniket Dhar** – 23051570  
+### 🔐 **“PRAMAAN” – A Community-Driven Ethical AI Platform for Detecting and Verifying Fake Digital Content**
 
----
+Using **PRAMAAN**, users can upload **images, text, emails, or links** to check whether they are **fake, AI-generated, or malicious** using machine learning models.
 
-## 🌐 Domain
+The platform also functions as a **social media-style community**, where users can post suspected fake news or manipulated media, and other users can **review, upvote, or downvote** its authenticity.
 
-**Cybersecurity & Ethical AI Systems**
+A **karma-based reputation system** rewards users who consistently identify misinformation accurately. By combining **AI-based detection** with **community moderation**, the platform improves **reliability, transparency, and trust** in identifying fake content.
 
 ---
 
-## 📌 Problem Statement
+## 🏗️ Our Architecture
 
-### 🔍 **The Challenge**
+- **User Layer**  
+  - Guest users can access AI detection tools  
+  - Detect:
+    - DeepFake Images  
+    - Phishing Messages & Emails  
+    - AI-generated Text  
+    - Fake News  
 
-The rapid growth of AI-generated content and misinformation has made it increasingly difficult to distinguish between authentic and manipulated information online.
+- **Authentication**  
+  - Secure login system  
+  - Required for:
+    - Posting content  
+    - Voting  
+    - Karma participation  
 
-Deepfake images, fake news articles, phishing messages, and AI-generated text are spreading rapidly across digital platforms. This surge of misleading content leads to:
+- **AI Processing**  
+  - Inputs (image/text/email) are analyzed using ML models  
+  - Detects:
+    - Deepfakes  
+    - AI-generated content  
+    - Phishing attempts  
 
-- **Widespread misinformation**  
-- **Online scams and phishing attacks**  
-- **Loss of public trust in digital content**  
+- **Community Layer**  
+  - Logged-in users can:
+    - Create posts  
+    - Validate content via **upvotes/downvotes**  
+
+- **Threshold Trigger**  
+  - Posts crossing a predefined vote limit are automatically sent for **AI verification**  
+
+- **Data Management**  
+  - Stores:
+    - Users  
+    - Posts  
+    - Votes  
+    - Karma scores  
+    - ML results  
+
+- **Dashboard**  
+  - Displays:
+    - AI analysis  
+    - Community validation  
+  - Provides **final credibility score**
 
 ---
 
-### ⚠️ **Current Limitations**
+## 🌍 Impact
 
-Most existing solutions:
+- **✔️ Reduces Misinformation Spread**  
+  Helps identify fake news, deepfakes, and misleading content before it goes viral  
 
-- Focus on a **single type of threat** (e.g., only fake news or only phishing detection)  
-- Lack **community-driven validation mechanisms**  
-- Fail to provide a **comprehensive, unified platform**  
+- **✔️ Enhances Digital Trust**  
+  Combines AI detection with community validation  
 
----
+- **✔️ Prevents Financial & Cyber Fraud**  
+  Detects phishing emails and SMS  
 
-### 💡 **Our Objective**
+- **✔️ Promotes Responsible AI Usage**  
+  Identifies AI-generated or manipulated content  
 
-To address these challenges, there is a need for a **unified platform** that:
-
-- Detects **AI-generated and suspicious content** using advanced models  
-- Incorporates **community verification** for higher reliability  
-- Flags **potentially harmful or misleading information** in real-time  
-
----
-
-### 🎯 **Target Users**
-
-- **Everyday internet users**  
-- **Journalists and media organizations**  
-- **Businesses and institutions**  
-- **Policymakers and regulatory bodies**  
+- **✔️ Empowers Users**  
+  Encourages independent verification and improves digital literacy  
 
 ---
 
-### 🚧 **Problem Summary**
+## 🌐 Real-World Applications
 
-We aim to build a solution that combines **AI-powered detection** with **human validation** to create a more **trustworthy digital ecosystem** and combat the rising threat of misinformation.
+- **📱 Social Media Platforms**  
+  - Flag fake news and deepfakes in real-time  
+
+- **🛡️ Cybersecurity & Fraud Detection**  
+  - Detect phishing and prevent scams  
+
+- **📰 Journalism & Fact-Checking**  
+  - Verify authenticity of news  
+
+- **🎓 Education Sector**  
+  - Teach identification of AI-generated content  
+
+- **🏢 Corporate & Enterprise Use**  
+  - Verify emails and internal communication  
+
+- **🏛️ Government & Public Safety**  
+  - Monitor and control misleading information  
 
 ---
+
+## ⚙️ Setup & Usage
+
+### 🛠️ Run Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/MhoOmm/Pramaan.git
+cd pramaan
+
+# Install backend dependencies
+cd backend
+npm install
+nodemon server.js
+
+# Install ML services
+cd ../ml_service
+venv\Scripts\activate
+pip install -r requirements.txt
+python app.py
+
+# Install frontend dependencies
+cd ../frontend
+npm install
+npm run dev

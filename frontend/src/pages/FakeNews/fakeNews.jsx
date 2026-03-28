@@ -127,7 +127,7 @@ export default function DetectFakeNews() {
       setExplanation("");
 
       // 1. ML Detection FIRST (works)
-      const mlRes = await fetch("http://localhost:5000/api/ml/analyze/fakenews", {
+      const mlRes = await fetch("https://pramaan-omega.vercel.app/api/ml/analyze/fakenews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: text.trim() }),
@@ -252,21 +252,30 @@ export default function DetectFakeNews() {
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
-              padding: "12px 24px",
-              background: "rgba(255, 255, 255, 0.05)",
-              color: "#fff",
+              padding: "14px 28px",
+              background: "#C8A97E",
+              color: "#000",
               textDecoration: "none",
               borderRadius: "8px",
-              border: "1px solid rgba(255,255,255,0.2)",
-              fontSize: "15px",
+              border: "none",
+              fontSize: "16px",
               letterSpacing: "0.05em",
-              fontWeight: "500",
-              backdropFilter: "blur(10px)",
+              fontWeight: "700",
+              boxShadow: "0 4px 15px rgba(200, 169, 126, 0.4)",
               width: "fit-content",
-              transition: "all 0.3s ease"
+              transition: "all 0.3s ease",
+              textTransform: "uppercase"
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 6px 20px rgba(200, 169, 126, 0.6)";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 15px rgba(200, 169, 126, 0.4)";
             }}
           >
-            Explore our All-in-One True News Platform 🚀
+            Access No Fake Samachar Platform
           </a>
         </div>
 

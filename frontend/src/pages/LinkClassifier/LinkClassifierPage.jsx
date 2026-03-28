@@ -270,7 +270,7 @@ export default function LinkClassifierPage() {
     if (!url.trim()) return;
     setStatus("loading"); setResult(null); setErrorMsg("");
     try {
-      const res = await fetch("http://localhost:5000/api/hf/detect-link", {
+      const res = await fetch("https://pramaan-omega.vercel.app/api/hf/detect-link", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: url.trim() }),
