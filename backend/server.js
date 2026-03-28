@@ -55,7 +55,24 @@ app.use('/api/chat',postRouter);
 app.use("/api/ml", mlRouter);
 app.use("/api/hf",hfrouter)
 
+const axios = require('axios');
 
+const SPACES = [
+    "https://animan0810-pramaan-ml.hf.space",
+    "https://animan0810-pramaan-ai-detector-api.hf.space"
+];
+
+// Ping both spaces every 10 minutes
+setInterval(async () => {
+    for (const url of SPACES) {
+        try {
+            await axios.get(`${url}/`, { timeout: 5000 });
+            console.log(`✅ Pinged ${url}`);
+        } catch {
+            console.log(`⚠️ ${url} is waking up...`);
+        }
+    }
+}, 10 * 60 * 1000);
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
