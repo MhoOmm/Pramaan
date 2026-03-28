@@ -86,17 +86,17 @@ A **karma-based reputation system** rewards users who consistently identify misi
   - Required for:
     - Posting content  
     - Voting  
-    - Karma participation  
+    - Karma participation
+  - Logged-in users can:
+    - Create posts  
+    - Validate content via **upvotes/downvotes**  
 
 - **AI Processing**  
   - Inputs (image/text/email) are analyzed using ML models  
   - Detects:
     - Deepfakes  
     - AI-generated content  
-    - Phishing attempts
-  - Logged-in users can:
-    - Create posts  
-    - Validate content via **upvotes/downvotes**   
+    - Phishing attempts  
 
 - **Threshold Trigger**  
   - Posts crossing a predefined vote limit are automatically sent for **AI verification**  
