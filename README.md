@@ -5,8 +5,8 @@
 **Team Name:** API_Smiths  
 
 **Team Members:**
-- **Omm Tripathi** – 23051606 *(Team Lead)*  
-- **Hamza Patel** – 2305215  
+- **Omm Tripathi** – 23051606  
+- **Hamza Patel** – 2305215 *(Team Lead)* 
 - **Asmit Sahu** – 23052231  
 - **Aniket Dhar** – 23051570
 
@@ -66,25 +66,6 @@ To address these challenges, there is a need for a **unified platform** that:
 ### 🚧 **Problem Summary**
 
 We aim to build a solution that combines **AI-powered detection** with **human validation** to create a more **trustworthy digital ecosystem** and combat the rising threat of misinformation.
-
----
-# 🚀 Hackathon Submission – API_Smiths
-
-## 👥 Team Information
-
-**Team Name:** API_Smiths  
-
-**Team Members:**
-- **Omm Tripathi** – 23051606 *(Team Lead)*  
-- **Hamza Patel** – 2305215  
-- **Asmit Sahu** – 23052231  
-- **Aniket Dhar** – 23051570  
-
----
-
-## 🌐 Domain
-
-**Cybersecurity & Ethical AI Systems**
 
 ---
 
