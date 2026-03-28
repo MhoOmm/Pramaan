@@ -29,6 +29,7 @@ const allowedOrigins = [
   "https://pramaanf.vercel.app",
   "https://pramaan-omega.vercel.app"
 ];
+// "http://localhost:5173","*",
 // if (process.env.CLIENT_ORIGIN) allowedOrigins.push(process.env.CLIENT_ORIGIN);
 
 app.use(cors({
