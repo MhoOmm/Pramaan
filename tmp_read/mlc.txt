@@ -77,7 +77,7 @@ const detectFakeImage = async (req, res) => {
   const LOG = (msg) => console.log(`[detectFakeImage] ${msg}`);
 
   try {
-    // Step 1: validate inbound file
+    // ── Step 1: validate inbound file ───────────────────────────────────────
     LOG("Step 1 — checking req.files");
     if (!req.files || !req.files.image) {
       LOG("ERROR: no file in request");
@@ -87,15 +87,14 @@ const detectFakeImage = async (req, res) => {
     const file = req.files.image;
     LOG(`Step 1 OK — name: ${file.name}, size: ${file.size}, buffer length: ${file.data?.length}`);
 
-    // Guard: server.js uses useTempFiles: false → file lives in file.data (Buffer)
-    // file.tempFilePath is UNDEFINED in this mode — never use it!
+    // Guard: file.data must be a non-empty Buffer (express-fileupload in-memory mode)
     if (!file.data || file.data.length === 0) {
-      LOG("ERROR: file.data is empty — useTempFiles must be false in server.js");
+      LOG("ERROR: file.data is empty — check express-fileupload config (useTempFiles must be false)");
       return res.status(500).json({ success: false, message: "File processing error: empty buffer" });
     }
 
-    // Step 2: upload Buffer to Cloudinary via upload_stream (no disk I/O)
-    LOG("Step 2 — uploading Buffer to Cloudinary...");
+    // ── Step 2: upload buffer to Cloudinary ──────────────────────────────────
+    LOG("Step 2 — uploading buffer to Cloudinary...");
     let cloudinaryResponse;
     try {
       cloudinaryResponse = await uploadImageToCloudinary(file.data, "pramaan");
@@ -107,7 +106,7 @@ const detectFakeImage = async (req, res) => {
     const imageUrl = cloudinaryResponse.secure_url;
     LOG(`Step 2 OK — Cloudinary URL: ${imageUrl}`);
 
-    // Step 3: call HF ML service
+    // ── Step 3: call HF ML service ──────────────────────────────────────────
     LOG("Step 3 — calling HF /predict-image...");
     let mlResponse;
     try {
@@ -139,9 +138,18 @@ const detectFakeImage = async (req, res) => {
 
     LOG(`Step 3 OK — prediction: ${JSON.stringify(mlResponse.data)}`);
 
+    // ── Step 4: respond ──────────────────────────────────────────────────────
     res.json({ success: true, imageUrl, prediction: mlResponse.data });
 
   } catch (error) {
+    console.error("[detectFakeImage] Unexpected error:", error.message, error.stack);
+    res.status(500).json({ success: false, message: "Image detection failed" });
+  }
+};�───────────────────────
+    res.json({ success: true, imageUrl, prediction: mlResponse.data });
+
+  } catch (error) {
+    // catch-all for unexpected errors
     console.error("[detectFakeImage] Unexpected error:", error.message, error.stack);
     res.status(500).json({ success: false, message: "Image detection failed" });
   }
