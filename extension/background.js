@@ -56,7 +56,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     (async () => {
       try {
         let url, bodyData;
-        const BASE_BACKEND = "http://localhost:5000";
+        const BASE_BACKEND = "https://pramaan-omega.vercel.app";
 
         if (request.type === "news") {
           url = `${BASE_BACKEND}/api/ml/analyze/fakenews`;

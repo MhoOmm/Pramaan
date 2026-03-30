@@ -13,7 +13,7 @@ document.getElementById("analyze-btn").addEventListener("click", async () => {
   resultDiv.innerText = "Analyzing with Pramaan AI...";
 
   try {
-    const BASE_BACKEND = "http://localhost:5000";
+    const BASE_BACKEND = "https://pramaan-omega.vercel.app";
     let url, bodyData;
 
     if (type === "news") {
