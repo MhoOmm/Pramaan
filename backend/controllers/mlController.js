@@ -74,40 +74,75 @@ const fakeNewsModel = async (req, res) => {
 // };
 
 const detectFakeImage = async (req, res) => {
+  const LOG = (msg) => console.log(`[detectFakeImage] ${msg}`);
+
   try {
+    // Step 1: validate inbound file
+    LOG("Step 1 — checking req.files");
     if (!req.files || !req.files.image) {
+      LOG("ERROR: no file in request");
       return res.status(400).json({ success: false, message: "Image file is required" });
     }
 
     const file = req.files.image;
+    LOG(`Step 1 OK — name: ${file.name}, size: ${file.size}, buffer length: ${file.data?.length}`);
 
-    // Cloudinary upload using tempFilePath and our custom utility
-    const cloudinaryResponse = await uploadImageToCloudinary(
-      file,
-      "pramaan"
-    );
+    // Guard: server.js uses useTempFiles: false → file lives in file.data (Buffer)
+    // file.tempFilePath is UNDEFINED in this mode — never use it!
+    if (!file.data || file.data.length === 0) {
+      LOG("ERROR: file.data is empty — useTempFiles must be false in server.js");
+      return res.status(500).json({ success: false, message: "File processing error: empty buffer" });
+    }
+
+    // Step 2: upload Buffer to Cloudinary via upload_stream (no disk I/O)
+    LOG("Step 2 — uploading Buffer to Cloudinary...");
+    let cloudinaryResponse;
+    try {
+      cloudinaryResponse = await uploadImageToCloudinary(file.data, "pramaan");
+    } catch (cloudinaryError) {
+      LOG(`ERROR during Cloudinary upload: ${cloudinaryError.message}`);
+      return res.status(500).json({ success: false, message: "Failed to upload image to storage" });
+    }
+
     const imageUrl = cloudinaryResponse.secure_url;
+    LOG(`Step 2 OK — Cloudinary URL: ${imageUrl}`);
 
-    // ML backend call
-    const mlResponse = await axios.post(
-      "https://animan0810-pramaan-ml.hf.space/predict-image",
-      { image_url: imageUrl },
-      { timeout: 60000 }
-    );
+    // Step 3: call HF ML service
+    LOG("Step 3 — calling HF /predict-image...");
+    let mlResponse;
+    try {
+      mlResponse = await axios.post(
+        "https://animan0810-pramaan-ml.hf.space/predict-image",
+        { image_url: imageUrl },
+        { timeout: 55000 }
+      );
+    } catch (mlError) {
+      LOG(`ERROR calling HF: ${mlError.message}`);
 
-    res.json({ success: true, imageUrl, prediction: mlResponse.data });
-  }catch (error) {
-    console.error("detectFakeImage error:", error.message);
-    
-    // Check if Hugging Face sent a 503 (Waking Up) error
-    if (error.response && error.response.status === 503) {
-      return res.status(503).json({ 
-        success: false, 
-        message: "The AI model is currently waking up! Please wait 60 seconds and try again." 
+      if (mlError.code === "ECONNABORTED" || mlError.message.includes("timeout")) {
+        return res.status(504).json({
+          success: false,
+          message: "Analysis timed out. The AI model may be waking up — please try again in 60 seconds.",
+        });
+      }
+      if (mlError.response?.status === 503) {
+        return res.status(503).json({
+          success: false,
+          message: "The AI model is currently waking up! Please wait 60 seconds and try again.",
+        });
+      }
+      return res.status(502).json({
+        success: false,
+        message: "ML service error. Please try again.",
       });
     }
 
-    // Otherwise, it's a real error
+    LOG(`Step 3 OK — prediction: ${JSON.stringify(mlResponse.data)}`);
+
+    res.json({ success: true, imageUrl, prediction: mlResponse.data });
+
+  } catch (error) {
+    console.error("[detectFakeImage] Unexpected error:", error.message, error.stack);
     res.status(500).json({ success: false, message: "Image detection failed" });
   }
 };
